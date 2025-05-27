@@ -40,5 +40,5 @@ A simple desktop banking management system built using **Java Swing** and **MySQ
 1. **Clone the repository** or copy the source files:
 
 ```bash
-git clone https://github.com/yourusername/java-swing-banking.git
+git clone https://github.com/Ram-Bhatt08/Bank_Management_System
 
