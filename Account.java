@@ -1,41 +1,16 @@
-public class AccountSwing {
-    private final String accountNumber;
-    private final String holderName;
+public class Account {
+    private int accountId;
+    private String accountNumber;
     private double balance;
 
-    public AccountSwing(String accountNumber, String holderName, double balance) {
+    public Account(int accountId, String accountNumber, double balance) {
+        this.accountId = accountId;
         this.accountNumber = accountNumber;
-        this.holderName = holderName;
         this.balance = balance;
     }
 
-    public AccountSwing(String holderName, double initialDeposit) {
-        this.accountNumber = generateUniqueAccountNumber();
-        this.holderName = holderName;
-        this.balance = initialDeposit;
-    }
-
-    private String generateUniqueAccountNumber() {
-        return "ACC" + System.currentTimeMillis();
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public String getHolderName() {
-        return holderName;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void deposit(double amount) {
-        if (amount > 0) balance += amount;
-    }
-
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) balance -= amount;
-    }
+    // Getters
+    public int getAccountId() { return accountId; }
+    public String getAccountNumber() { return accountNumber; }
+    public double getBalance() { return balance; }
 }
