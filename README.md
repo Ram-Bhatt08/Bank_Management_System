@@ -14,7 +14,11 @@ A simple desktop banking management system built using **Java Swing** and **MySQ
 - 🔐 Secure database interaction using **PreparedStatement**
 
 ---
+## Screenshot
 
+
+
+![Screenshot 2025-05-28 010431](https://github.com/user-attachments/assets/269ad2b2-1c35-4ff9-86cb-b68919f031b0)
 
 ---
 
@@ -43,9 +47,6 @@ A simple desktop banking management system built using **Java Swing** and **MySQ
 git clone https://github.com/Ram-Bhatt08/Bank_Management_System
 
 ---
-**## ScreenShot**
-
-![Screenshot 2025-05-28 010431](https://github.com/user-attachments/assets/9233c7b3-bf71-4c18-9cab-ecb2d56c60b8)
 
 
 
