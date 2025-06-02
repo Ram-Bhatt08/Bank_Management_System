@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.CardLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class BankingAppSwing {
     public static void main(String[] args) {
@@ -7,7 +10,7 @@ public class BankingAppSwing {
         DatabaseManager.initializeDatabase();
 
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Next-Gen Banking System");
+            JFrame frame = new JFrame("Royal Bank");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 600);
             frame.setLocationRelativeTo(null);

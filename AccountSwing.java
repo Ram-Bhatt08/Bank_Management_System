@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class AccountSwing {
     private static int idCounter = 1000;
     private final String accountNumber;
@@ -9,23 +13,37 @@ public class AccountSwing {
         this.holderName = holderName;
         this.balance = initialDeposit;
     }
-    public static int getIdCounter() {
-    return idCounter;
-}
-    public String getAccountNumber() { return accountNumber; }
-    public String getHolderName() { return holderName; }
-    public double getBalance() { return balance; }
 
-    public void deposit(double amount) {
+    public AccountSwing(String accountNumber, String holderName, double balance) {
+        this.accountNumber = accountNumber;
+        this.holderName = holderName;
+        this.balance = balance;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) throws SQLException {
         if (amount > 0) {
             balance += amount;
+            updateBalanceInDatabase();
         }
     }
 
     public void withdraw(double amount) throws Exception {
-        if (amount > balance) throw new Exception("Insufficient balance!");
         if (amount <= 0) throw new Exception("Amount must be positive!");
+        if (amount > balance) throw new Exception("Insufficient balance!");
         balance -= amount;
+        updateBalanceInDatabase();
     }
 
     public void transfer(AccountSwing target, double amount) throws Exception {
@@ -40,6 +58,16 @@ public class AccountSwing {
             "<b>Balance:</b> ₹%.2f</html>",
             accountNumber, holderName, balance
         );
+    }
+
+    private void updateBalanceInDatabase() throws SQLException {
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                 "UPDATE accounts SET balance = ? WHERE account_number = ?")) {
+            stmt.setDouble(1, balance);
+            stmt.setString(2, accountNumber);
+            stmt.executeUpdate();
+        }
     }
 }
 

@@ -53,6 +53,30 @@ public class UIHelperSwing {
         return panel;
     }
 
+    // New method: Create input panel with icon
+    public static JPanel createInputPanelWithIcon(String labelText, JComponent inputComponent, Icon icon) {
+        JPanel panel = new JPanel(new BorderLayout(10, 5));
+        panel.setBackground(Color.WHITE);
+        
+        JLabel label = new JLabel(labelText);
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        
+        // Create icon label
+        JLabel iconLabel = new JLabel(icon);
+        iconLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+        
+        // Panel for label and icon
+        JPanel labelPanel = new JPanel(new BorderLayout(5, 0));
+        labelPanel.add(iconLabel, BorderLayout.WEST);
+        labelPanel.add(label, BorderLayout.CENTER);
+        labelPanel.setBackground(Color.WHITE);
+        
+        panel.add(labelPanel, BorderLayout.WEST);
+        panel.add(inputComponent, BorderLayout.CENTER);
+        
+        return panel;
+    }
+
     // Show message dialog without color customization
     public static void showMessageDialog(Component parent, String message, String title) {
         JOptionPane.showMessageDialog(parent, 
@@ -75,4 +99,3 @@ public class UIHelperSwing {
             JOptionPane.ERROR_MESSAGE);
     }
 }
-
